@@ -11,9 +11,46 @@
 <body>
     <h1>SIGN-UP WITH US</h1>
     <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">submit</button>
+            {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{form.first_name.label_tag}}</td>
+                <td>{{form.first_name}}</td>
+                <td></td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                    <td>{{form.last_name.label_tag}}</td>
+                    <td>{{form.last_name}}</td>
+                    <td></td>
+            </tr>
+            <tr>
+                    <td>{{form.username.label_tag}}</td>
+                    <td>{{form.username}}</td>
+                    <td>usernames are case sensitive</td>
+            </tr>
+            <tr>
+                    <td>{{form.email.label_tag}}</td>
+                    <td>{{form.email}}</td>
+                    <td>please enter a valid email</td>
+            </tr>
+            <tr>
+                    <td>{{form.password1.label_tag}}</td>
+                    <td>{{form.password1}}</td>
+                    <td>your passwords must contain a letter and a number</td>
+            </tr>
+            <tr>
+                    <td>{{form.password2.label_tag}}</td>
+                    <td>{{form.password2}}</td>
+                    <td>must be the same and passwords are case sensitive</td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">submit</button></td>
+            </tr>
+            
+        </table>
     </form>
 </body>
 </html>
