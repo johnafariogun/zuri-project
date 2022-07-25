@@ -12,7 +12,7 @@
     <h1>LOG-IN WITH US</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <button type="submit">submit</button>
     </form>
 </body>

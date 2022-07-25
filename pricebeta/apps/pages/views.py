@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect 
 from django import forms
 from django.contrib.auth.models import User
-
+from apps.pages.models import Category,Product,WishList
+from django.views import View
 # importing shortcuts classes
 from .forms import UserRegisterForm
 # importing the user creation form created
@@ -11,7 +12,14 @@ class SignUpForm(UserRegisterForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2' )
-        
+    
+    # to get a users emails in case of mass emailing, and for other stuff involving the email,
+    @staticmethod
+    def get_User_by_email(email):
+        try:
+            return User.objects.get(email=email)
+        except:
+            return False   
 # Create your views here.
 # Defining the home/landing view
 def home(request):
@@ -37,3 +45,18 @@ def register(request):
     }
 
     return render(request, 'pages/register.html', context)
+
+
+def products(request):
+    product = Product.objects.all()
+    context = {
+        'product': product
+    }
+    return render(request,'pages/products.html', context)
+
+def categories(request):
+    category=Category.objects.all()
+    context= {
+        'category': category
+    }
+    return render(request, 'pages/products.html', context)
